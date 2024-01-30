@@ -1,0 +1,25 @@
+@use "../global" as g;
+
+.icon {
+  color: g.$col333;
+  vertical-align: middle;
+
+  &.-red {
+    color: g.$colError;
+  }
+
+  &.-green {
+    color: g.$colSuccess;
+  }
+
+  &.-white {
+    color: g.$colfff;
+  }
+
+  &.-dark {
+    color: #4B4B4B;
+  }
+  &.-gray {
+    color: #697084;
+  }
+}

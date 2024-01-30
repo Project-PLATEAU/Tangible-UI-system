@@ -1,0 +1,60 @@
+@use "../global" as g;
+
+/*--------------------------------------------------
+  base style
+--*/
+:root {
+  font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
+  font-size: 10px;
+  font-weight: g.$fontWeightRegular;
+  scroll-padding-top: 0;
+}
+
+body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  line-height: 1.5;
+  min-width: 1000px;
+  min-height: 100vh;
+  font-size: 1.6rem;
+  background-color: g.$colfff;
+  word-break: break-word;
+}
+
+img {
+  display: inline-block;
+  max-width: 100%;
+  height: auto;
+  vertical-align: top;
+}
+ul, ol {
+  margin: 0;
+  padding-left: 0;
+  list-style-type: none;
+}
+a {
+  @include g.transitionTiming;
+  color: g.$col8F5F98;
+  text-decoration: none;
+}
+button {
+  background-color: transparent;
+  color: inherit;
+}
+mark {
+  background: none;
+}
+
+#root {
+  overflow: hidden;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+iframe {
+  border: 0;
+}

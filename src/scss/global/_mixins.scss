@@ -1,0 +1,138 @@
+@use "variables" as v;
+@use "functions" as f;
+
+/*--------------------------------------------------
+  transition
+  - transitionの設定
+  - $propertyは面倒であればallで指定
+--------------------------------------------------*/
+@mixin transition($property, $duration, $opacity: 0.6, $color: v.$col31759A) {
+  transition-property: $property;
+  transition-timing-function: cubic-bezier(
+      0.39,
+      0.575,
+      0.565,
+      1
+  ); /* easeOutSine */
+  transition-duration: #{$duration}s;
+
+  &:hover {
+    opacity: $opacity;
+    transition-timing-function: cubic-bezier(
+        0.165,
+        0.84,
+        0.44,
+        1
+    ); /* easeOutQuart */
+    transition-duration: 0.1s;
+  }
+
+  &:focus {
+    outline: 3px solid $color;
+  }
+}
+
+/*--------------------------------------------------
+  hover animation
+  - ホバーでふんわり透過
+  - aタグ以外にも適用可
+  - $property:      all, opacity, width, border-widthなど
+  - $time:          500など
+  - $isOpacity:     デフォルトはtrue、falseを指定するとhover時に透過しない
+  - $transparency:  デフォルトは0.6、値を指定するとhover時の透過度を変更、$isOpacityをfalseにした場合はhover時に透過しない
+--------------------------------------------------*/
+@mixin hoverAnimation($property, $duration, $isOpacity: true, $transparency: 0.6) {
+  -webkit-transition: $property #{$duration}s;
+  -moz-transition: $property #{$duration}s;
+  -ms-transition: $property #{$duration}s;
+  -o-transition: $property #{$duration}s;
+  transition: $property #{$duration}s;
+  @if $isOpacity {
+    opacity: 1;
+    &:hover {
+      opacity: $transparency;
+    }
+  }
+}
+
+/*--------------------------------------------------
+  hover時のタイミングだけ管理
+  - aタグはデフォルトで付与しているため、追加不要
+--------------------------------------------------*/
+
+@mixin transitionTiming($hoverInDuration: 0.05, $hoverOutDuration: 0.15) {
+  transition-property: all;
+  transition-timing-function: v.$easeOutQuart;
+  transition-duration: #{$hoverOutDuration}s;
+
+  &:hover,
+  &:focus-visible {
+    transition-timing-function: v.$easeOutSine; /* easeOutQuart */
+    transition-duration: #{$hoverInDuration}s;
+  }
+}
+
+/*--------------------------------------------------
+  hover:透過, focus:囲みborder
+  - $outLineColor: outlineの線の色
+--------------------------------------------------*/
+@mixin transitionOpacity($opacityLevel: 0.6, $outLineColor: v.$colRgba31759A-80) {
+  transition-property: opacity;
+  transition-timing-function: cubic-bezier(
+      0.39,
+      0.575,
+      0.565,
+      1
+  ); /* easeOutSine */
+  transition-duration: 0.3s;
+
+  &:hover,
+  &:focus-visible {
+    transition-timing-function: cubic-bezier(
+        0.165,
+        0.84,
+        0.44,
+        1
+    ); /* easeOutQuart */
+    transition-duration: 0.1s;
+  }
+  &:hover {
+    opacity: $opacityLevel;
+  }
+  &:focus-visible {
+    outline: 3px solid $outLineColor;
+  }
+}
+
+
+/*--------------------------------------------------
+  hover:透過+border, focus:囲みborder
+  - $outLineColor: outlineの線の色
+--------------------------------------------------*/
+@mixin transitionOpacityBorder($opacityLevel: 0.6, $outLineColor: v.$col31759A) {
+  transition-property: opacity, border;
+  transition-timing-function: cubic-bezier(
+      0.39,
+      0.575,
+      0.565,
+      1
+  ); /* easeOutSine */
+  transition-duration: 0.3s;
+
+  &:hover,
+  &:focus-visible {
+    transition-timing-function: cubic-bezier(
+        0.165,
+        0.84,
+        0.44,
+        1
+    ); /* easeOutQuart */
+    transition-duration: 0.1s;
+  }
+  &:hover {
+    opacity: $opacityLevel;
+  }
+  &:focus-visible {
+    outline: 3px solid $outLineColor;
+  }
+}

@@ -1,0 +1,45 @@
+@use "../global" as g;
+
+.MuiButton-root.avatar,
+.avatar {
+  min-width: 60px;
+  padding: 10px;
+  height: 60px;
+
+  img {
+    border: 1px solid g.$col707070;
+    border-radius: 50%;
+    box-sizing: border-box;
+  }
+}
+
+.no-avatar {
+  width: 25px;
+  height: 25px;
+  background: g.$colfff;
+  border-radius: 50%;
+  border: 1px solid g.$col707070;
+}
+
+.avatar-user {
+  display: flex;
+  align-items: center;
+  margin-top: 13px;
+
+  &__avatar {
+    margin-right: 13px;
+    padding: 0;
+    min-width: 40px;
+    height: 40px;
+  }
+
+  &__heading {
+    margin-bottom: -3px;
+    font-size: 1.2rem;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+    font-weight: g.$fontWeightBold;
+  }
+}

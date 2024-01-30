@@ -1,0 +1,78 @@
+@use "../global" as g;
+
+.MuiAppBar-root.header {
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px 20px 10px 30px;
+  height: 80px;
+  background: g.$col0F1546;
+  box-shadow: none;
+
+  &.-logout {
+    padding-right: 30px;
+  }
+}
+
+.drawer {
+  &__inner {
+    width: 300px;
+    height: 100vh;
+    color: #ffffff;
+    background: g.$col0F1546;
+  }
+
+  & &__logout {
+    margin: 14px 20px 0;
+    width: calc(100% - 40px);
+  }
+}
+
+.drawer-header {
+  display: flex;
+  align-items: center;
+  height: 80px;
+  padding: 15px;
+
+  & &__avatar {
+    margin-right: 3px;
+  }
+
+  & &__text {
+    flex: 0 1 auto;
+    min-width: 0;
+    font-size: 1.8rem;
+    font-weight: g.$fontWeightBold;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+}
+
+.drawer-nav {
+  font-size: 1.4rem;
+  border-top: 1px solid #707070;
+  border-bottom: 1px solid #707070;
+
+  .MuiListItemIcon-root {
+    min-width: 35px;
+  }
+
+  .MuiListItemIcon-root svg {
+    font-size: 2.4rem;
+  }
+
+  & &__text {
+    margin: 0;
+  }
+
+  &__text span {
+    font-size: 100%;
+    font-weight: g.$fontWeightBold;
+  }
+}
+
+//ここだけオーバーレイを透過
+.MuiDrawer-root .MuiBackdrop-root {
+  background: rgba(0, 0, 0, 0);
+}

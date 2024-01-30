@@ -1,0 +1,100 @@
+@use "../global" as g;
+
+.street {
+  padding-top: 30px;
+}
+
+.street-search {
+  position: relative;
+  width: 400px;
+
+  & &__icon {
+    position: absolute;
+    top: 50%;
+    left: 10px;
+    transform: translateY(-50%);
+    font-size: 2.4rem;
+  }
+
+  &__input {
+    .MuiFormLabel-root:not(.Mui-focused):not(.MuiFormLabel-filled) {
+      left: 20px;
+      font-size: 1.4rem;
+    }
+
+    .MuiInputBase-input {
+      padding-left: 35px;
+      font-size: 1.4rem;
+    }
+  }
+}
+
+.street-list {
+  margin-top: 35px;
+
+  &__item {
+    display: flex;
+    margin-top: 25px;
+  }
+
+  &__image {
+    margin-right: 35px;
+    width: 320px;
+    overflow: hidden;
+
+    img {
+      border-radius: g.$borderRadius;
+      max-width: 320px;
+      max-height: 320px;  
+    }
+  }
+
+  &__content {
+    position: relative;
+    padding-right: 120px;
+    flex: 1;
+  }
+
+  &__heading {
+    margin-bottom: 11px;
+    color: g.$col333;
+    font-size: 1.8rem;
+    font-weight: g.$fontWeightBold;
+  }
+
+  &__id {
+    font-size: 1.4rem;
+    font-weight: g.$fontWeightBold;
+  }
+
+  &__type {
+    font-size: 1.2rem;
+    color: g.$colSuccess;
+    font-weight: g.$fontWeightBold;
+  }
+
+  & &__textarea {
+    margin-top: 18px;
+
+    .MuiInputBase-input {
+      font-size: 1.4rem;
+    }
+  }
+
+  & &__switch {
+    position: absolute;
+    top: 0;
+    right: -5px;
+    padding: 0;
+    border: 5px solid g.$colfff;
+    border-radius: 19px;
+
+    .MuiButtonBase-root {
+      padding: 4px;
+
+      &.Mui-checked {
+        transform: translateX(35px);
+      }
+    }
+  }
+}

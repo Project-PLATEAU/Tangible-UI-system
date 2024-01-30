@@ -1,0 +1,87 @@
+@use "../global" as g;
+
+.logout-box {
+  margin: 0 auto;
+  padding: 20px 35px 45px;
+  width: 550px;
+  box-shadow: 0 3px 6px rgba(#000000, 0.16);
+  border-radius: g.$borderRadius;
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    height: 50px;
+    font-size: 1.8rem;
+    font-weight: g.$fontWeightBold;
+    border-bottom: 3px solid g.$colMain;
+  }
+
+  &__text {
+    margin: 20px 0 -5px;
+    line-height: 1.7;
+    font-size: 1.4rem;
+  }
+
+  & &__item {
+    margin-top: 40px;
+
+    .MuiInputBase-root::before {
+      border-bottom-color: g.$col333;
+    }
+
+    .MuiInput-input {
+      color: g.$col333;
+      font-size: 1.6rem;
+    }
+
+    .MuiFormLabel-root {
+      color: g.$col333;
+      font-size: 1.4rem;
+    }
+
+    // .MuiFormHelperText-filled {
+    //   margin: 0.5em 0 0;
+    //   color: g.$colError;
+    //   font-size: 1.4rem;
+    // }
+
+    .MuiFormLabel-root.Mui-error {
+      color: g.$colError;
+      transform: translate(0, -1.5px) scale(0.75);
+    }
+
+    .MuiFilledInput-root.Mui-error {
+      background: transparent;
+    }
+
+    .MuiInputBase-root.Mui-error::before {
+      border-bottom-color: g.$colError;
+    }
+  }
+
+  &__links {
+    margin-top: 20px;
+  }
+
+  &__linksItem {
+    margin-top: 5px;
+  }
+
+  &__linksLink {
+    text-decoration: underline;
+    font-size: 1.4rem;
+
+    &:hover {
+      text-decoration: none;
+    }
+  }
+
+  & &__linksIcon {
+    font-size: 1.4rem;
+  }
+
+  & &__button {
+    display: flex;
+    margin: 40px auto 0;
+  }
+}

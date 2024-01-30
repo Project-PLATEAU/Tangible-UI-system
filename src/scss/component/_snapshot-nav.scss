@@ -1,0 +1,54 @@
+@use "../global" as g;
+
+.snapshot-nav {
+  display: flex;
+  justify-content: center;
+  padding: 0;
+  white-space: nowrap;
+
+  &__item:nth-child(2) {
+    .MuiButtonBase-root {
+      min-width: 43px;
+      font-size: 0;
+    }
+
+    .MuiButton-startIcon {
+      margin-right: -4px;
+    }
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 2.4rem;
+  }
+
+  &__switch-label {
+    background-color: #ffffff99;
+    border-radius: 8px;
+    padding-right: 6px;
+    .MuiFormControlLabel-label {
+      font-size: 1.4rem;
+      font-weight: bold;
+      color: #000;
+    }
+  }
+
+  &__switch {
+    position: absolute;
+    top: 0;
+    right: -5px;
+    padding: 0;
+    // background-color: g.$colSuccess;
+    // border: 2px solid g.$colSuccess;
+    border-radius: 19px;
+
+    .MuiButtonBase-root {
+      top: 5px;
+      left: 5px;
+      padding: 4px;
+
+      &.Mui-checked {
+        transform: translateX(35px);
+      }
+    }
+  }
+}

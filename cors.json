@@ -1,0 +1,7 @@
+[
+  {
+    "origin": ["http://localhost:5173", "https://--project name--.firebaseapp.com", "https://--project name--.web.app"],
+    "method": ["GET"],
+    "maxAgeSeconds": 3600
+  }
+]

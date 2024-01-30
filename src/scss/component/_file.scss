@@ -1,0 +1,30 @@
+@use "../global" as g;
+
+.MuiIconButton-root.file {
+  position: relative;
+  display: block;
+  margin: 30px auto 0;
+  width: 160px;
+  height: 160px;
+}
+
+.file {
+  &__circle {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border: 1px solid g.$col707070;
+    border-radius: 50%;
+  }
+
+  & &__icon {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    font-size: 2.4rem;
+  }
+}

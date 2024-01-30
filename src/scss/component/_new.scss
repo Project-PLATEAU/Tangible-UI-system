@@ -1,0 +1,214 @@
+@use "../global" as g;
+
+.new-button {
+  justify-content: flex-end;
+  margin: 0 calc((100vw - 100%) / -2);
+  padding: 10px 30px;
+  background: g.$colF0F0F0;
+
+  .MuiButtonBase-root {
+    width: 135px;
+  }
+}
+
+.new-header {
+  margin: 0 auto;
+  padding: 42px 0 32px;
+  width: 100%;
+  max-width: 1000px;
+
+  &__header {
+    margin-bottom: 14px;
+
+    .MuiSvgIcon-root {
+      font-size: 2.4rem;
+    }
+  }
+
+  &__heading {
+    color: g.$col0F1546;
+    font-size: 3.6rem;
+  }
+
+  .MuiInputBase-input {
+    font-size: 1.4rem;
+  }
+}
+
+.new-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  margin: 0 calc((100vw - 100%) / -2);
+  padding: 10px 30px;
+  background: g.$colF0F0F0;
+
+  &__list {
+    font-size: 1.4rem;
+    font-weight: g.$fontWeightBold;
+  }
+
+  &__item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    .icon {
+      font-size: 2.4rem;
+
+      &:first-child {
+        margin-right: 12px;
+      }
+
+      &:last-child {
+        margin-left: 5px;
+      }
+    }
+  }
+
+  &__item-selected {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #ffebcd;
+    box-shadow: 0 3px 6px rgba(#000000, 0.16);
+    border-radius: g.$borderRadius;
+
+    .icon {
+      font-size: 2.4rem;
+
+      &:first-child {
+        margin-right: 12px;
+      }
+
+      &:last-child {
+        margin-left: 5px;
+      }
+    }
+  }
+
+
+  .MuiButtonBase-root {
+    min-width: 135px;
+  }
+}
+
+.new-map {
+  margin: 0 calc((100vw - 100%) / -2);
+  height: 690px;
+  position: relative;
+  .map {
+    width: 100%;
+    height: 100%;
+  }
+  .overlay {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    background-color: #33669966;
+  }
+}
+
+.new-list {
+  margin: 7px auto 0;
+  width: 100%;
+  max-width: 1000px;
+
+  &__item {
+    position: relative;
+    margin-top: 30px;
+    padding-bottom: 10px;
+    box-shadow: 0 3px 6px rgba(#000000, 0.16);
+    border-radius: g.$borderRadius;
+  }
+
+  .selected {
+    background-color: #ffebcd;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 13px;
+    padding: 0 20px;
+    height: 52px;
+    font-size: 1.8rem;
+    border-bottom: 1px solid g.$coloEBEBEB;
+
+    .icon {
+      font-size: 2.4rem;
+
+      &:first-child {
+        margin-right: 11px;
+      }
+
+      &:last-child {
+        margin-left: 11px;
+      }
+    }
+  }
+
+  &__table {
+    width: 100%;
+    font-size: 1.8rem;
+
+    th,td {
+      padding: 6px 0;
+    }
+
+    th {
+      padding-left: 22px;
+      width: 290px;
+      text-align: left;
+      font-weight: g.$fontWeightRegular;
+    }
+
+    td:last-child {
+      padding-right: 14px;
+      width: 184px;
+      text-align: right;
+    }
+
+    .-error {
+      color: g.$colError;
+
+    }
+
+    .-error.-ja {
+      font-size: 1.4rem;
+      font-weight: g.$fontWeightBold;
+    }
+
+    .icon {
+      position: relative;
+      top: -1px;
+      margin-left: 5px;
+      font-size: 2.4rem;
+    }
+  }
+
+  & &__button {
+    height: 36px;
+  }
+
+  &__menu {
+    .MuiMenuItem-root {
+      font-size: 1.4rem;
+    }
+  }
+
+  & &__menuButton {
+    position: absolute;
+    top: 26px;
+    right: 6px;
+    transform: translateY(-50%);
+    color: g.$colMain;
+
+    svg {
+      font-size: 2.4rem;
+    }
+  }
+}

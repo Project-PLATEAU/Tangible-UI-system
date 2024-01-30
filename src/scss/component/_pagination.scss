@@ -1,0 +1,10 @@
+@use "../global" as g;
+
+.pagination {
+  margin-top: 20px;
+  text-align: center;
+
+  .MuiPagination-ul {
+    display: inline-flex;
+  }
+}

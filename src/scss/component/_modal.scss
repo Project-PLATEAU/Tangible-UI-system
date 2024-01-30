@@ -1,0 +1,175 @@
+@use "../global" as g;
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 37px 40px 27px;
+  width: 1000px;
+  max-height: 90%;
+  background: g.$colfff;
+  border-radius: g.$borderRadius;
+  overflow-y: auto;
+
+  &.-small {
+    padding: 20px 35px 30px;
+    width: 550px;
+  }
+
+  &__heading {
+    display: flex;
+    align-items: center;
+    margin-bottom: 25px;
+    height: 50px;
+    font-size: 1.8rem;
+    font-weight: g.$fontWeightBold;
+    border-bottom: 3px solid g.$colMain;
+
+    .icon {
+      margin-right: 10px;
+      font-size: 2.4rem;
+    }
+  }
+
+  &__image {
+    margin-bottom: 40px;
+
+    img, .canvas {
+      aspect-ratio: 1000 / 500;
+      object-fit: cover;
+      border: 1px solid g.$colC8DBF2;
+      border-radius: 10px;
+    }
+  }
+
+  & &__item {
+    .MuiInputBase-input {
+      line-height: 1.7;
+      color: g.$col333;
+      font-size: 1.8rem;
+    }
+
+    .MuiFormLabel-root {
+      color: g.$col333;
+      font-size: 1.4rem;
+    }
+
+    &.-large {
+      .MuiInputBase-input {
+        padding-top: 10px;
+        padding-bottom: 10px;
+        color: g.$col0F1546;
+        font-size: 2.4rem;
+        font-weight: g.$fontWeightBold;
+      }
+    }
+
+    &.-small {
+      .MuiInputBase-input {
+        font-size: 1.4rem;
+      }
+    }
+  }
+
+  &__button {
+    justify-content: center;
+    margin-top: 35px;
+
+    .MuiButtonBase-root {
+      width: 135px;
+    }
+  }
+
+  &__counter {
+    color: g.$col333;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  &__text {
+    font-size: 1.4rem;
+
+    &.-fat {
+      margin-top: 37px;
+      line-height: 1.7;
+      font-size: 1.8rem;
+    }
+  }
+}
+
+.modal-peace {
+  height: 90%;
+
+  &__tabList {
+    margin-top: 25px;
+    border-bottom: 1px solid g.$coloEBEBEB;
+  }
+
+  .MuiTabs-indicator {
+    height: 6px;
+  }
+
+  &__map {
+    margin: 0 -40px;
+
+    .canvas, .map {
+      width: 100%;
+      height: auto;
+      aspect-ratio: 1000 / 400;
+      object-fit: cover;
+    }
+  }
+}
+
+.modal.modal-snapshot-show {
+  .modal__image {
+    margin: -37px -40px 0;
+
+    img {
+      border-top-left-radius: 5px;
+      border-top-right-radius: 5px;
+      border-bottom-left-radius: 0px;
+      border-bottom-right-radius: 0px;
+    }
+  }
+
+  .modal__heading {
+    margin: 42px 0 25px;
+    height: auto;
+    color: g.$col0F1546;
+    font-size: 2.4rem;
+    border-bottom: none;
+  }
+}
+
+.modal-nav {
+  display: flex;
+  justify-content: flex-start;
+  padding: 0;
+  white-space: nowrap;
+
+  & &__item {
+    width: auto;
+  }
+
+  &__item:nth-child(2) {
+    .MuiButtonBase-root {
+      min-width: 43px;
+      font-size: 0;
+    }
+
+    .MuiButton-startIcon {
+      margin-right: -4px;
+    }
+  }
+
+  .MuiSvgIcon-root {
+    font-size: 2.4rem;
+  }
+}
+
+.modal-sort-delete {
+  top: -9px;
+  box-shadow: 0 0 6px rgba(#000000, 0.32);
+}

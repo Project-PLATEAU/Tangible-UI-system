@@ -1,0 +1,363 @@
+@use "../global" as g;
+
+.detail {
+  margin: 0 auto;
+  width: 100%;
+  max-width: 1044px;
+
+  .snapshot-nav {
+    justify-content: flex-end;
+    margin: 0 calc((100vw - 100%) / -2);
+    padding: 10px 30px;
+    background: g.$colF0F0F0;
+
+    &__item {
+      width: auto;
+    }
+  }
+}
+
+.detail-header {
+  padding: 42px 0 32px;
+
+  &__left {
+    flex: 1;
+  }
+
+  &__right {
+    position: relative;
+    padding-right: 49px;
+    width: 244px;
+  }
+
+  &__heading {
+    margin-bottom: 14px;
+    color: g.$col0F1546;
+    font-size: 3.6rem;
+  }
+
+  &__text {
+    line-height: 1.7;
+    font-size: 1.4rem;
+  }
+
+  &__status {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 40px;
+    font-size: 1.4rem;
+    font-weight: g.$fontWeightBold;
+    background: g.$colE3E3E3;
+    border: 2px solid g.$colE3E3E3;
+    border-radius: 4px;
+
+    &::before {
+      margin-right: 0.5em;
+    }
+
+    &.-active {
+      background: none;
+      border-color: g.$colError;
+
+      &::before {
+        content: "●";
+        color: g.$colError;
+      }
+    }
+
+    &.-nonactive {
+
+      &::before {
+        content: "■";
+      }
+    }
+  }
+
+  &__table {
+    margin-top: 22px;
+    font-size: 1.2rem;
+
+    th,td {
+      padding: 5px 0;
+    }
+
+    th {
+      width: 56px;
+      text-align: left;
+      font-weight: g.$fontWeightRegular;
+    }
+
+    td {
+      font-weight: g.$fontWeightBold;
+    }
+  }
+
+  &__menu {
+    .MuiMenuItem-root {
+      font-size: 1.4rem;
+    }
+  }
+
+  & &__menuButton {
+    position: absolute;
+    top: 0;
+    right: 0;
+    color: g.$colMain;
+
+    svg {
+      font-size: 2.4rem;
+    }
+  }
+}
+
+.detail-area {
+  display: flex;
+  align-items: stretch;
+  margin: 0 calc((100vw - 100%) / -2);
+  height: 500px;
+  border-top: 1px solid g.$colC8DBF2;
+  border-bottom: 1px solid g.$colC8DBF2;
+  overflow: hidden;
+  &__ar,
+  &__map {
+    flex: 1;
+
+    .canvas, .map {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+.detail-sec {
+  margin-top: 38px;
+
+ & + & {
+   margin-top: 68px;
+ }
+
+  &__heading {
+    margin-bottom: 26px;
+    color: g.$col0F1546;
+    font-family: g.$fontEn;
+    font-size: 2.4rem;
+    font-weight: g.$fontWeightRegular;
+  }
+
+  &__heading02 {
+    margin: -6px 0 43px;
+    font-size: 1.8rem;
+    font-weight: g.$fontWeightBold;
+
+    & ~ & {
+      margin-top: 60px;
+    }
+
+    .icon {
+      margin-right: 13px;
+      font-size: 2.4rem;
+    }
+  }
+
+  &__empty {
+    font-size: 1.4rem;
+  }
+}
+
+$_gap: 38px;
+$_columns: 3;
+
+.detail-snapshot {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $_gap;
+
+  &__item {
+    width: calc((100% / $_columns) - $_gap + ($_gap / $_columns));
+    box-shadow: 0 3px 6px rgba(#000000, 0.16);
+    border-radius: 10px;
+    border: none;
+    cursor: pointer;
+    transition: box-shadow 300ms ease;
+
+    &:hover {
+      box-shadow: none;
+      border: 1px solid g.$colC8DBF2;
+    }
+  }
+
+  &__image {
+    img {
+      width: 100%;
+      aspect-ratio: 320 / 180;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+    }
+  }
+
+  &__content {
+    padding: 33px 20px 23px;
+    line-height: 1.7;
+    color: g.$col333;
+    font-size: 1.4rem;
+    border: 1px solid g.$colC8DBF2;
+    border-bottom: none;
+    border-left: none;
+    border-right: none;
+  }
+
+  &__heading {
+    color: g.$col0F1546;
+    font-size: 1.8rem;
+    font-weight: g.$fontWeightBold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__date {
+    color: g.$col4B4B4B;
+    font-size: 1.2rem;
+    font-weight: g.$fontWeightBold;
+  }
+
+  &__text {
+    margin-top: 16px;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 4;
+  }
+}
+
+.detail-tab {
+  & &__list {
+    margin-bottom: 57px;
+    min-height: inherit;
+
+    .MuiTabs-indicator {
+      display: none;
+    }
+  }
+
+  & &__item {
+    position: relative;
+    margin-right: 32px;
+    padding: 0 0 0 40px;
+    min-width: inherit;
+    max-width: inherit;
+    min-height: 27px;
+    color: g.$col333;
+    font-weight: normal;
+
+    &::before {
+      content: "";
+      position: absolute;
+      top: 50%;
+      left: 0;
+      transform: translateY(-50%);
+      display: block;
+      padding: 3px;
+      width: 25px;
+      height: 25px;
+      border: 1px solid g.$col8F5F98;
+      border-radius: 50%;
+    }
+
+    &.Mui-selected {
+      &::before {
+        background: g.$col8F5F98;
+        background-clip: content-box;
+      }
+    }
+  }
+}
+
+.detail-map {
+  .map {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 1044 / 418;
+    object-fit: cover;
+  }
+}
+
+.detail-street {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $_gap;
+
+  &__item {
+    width: calc((100% / $_columns) - $_gap + ($_gap / $_columns));
+    box-shadow: 0 3px 6px rgba(#000000, 0.16);
+    border-radius: 10px;
+    border: 1px solid g.$colC8DBF2;
+  }
+
+  &__image {
+    height: 160px;
+    background-color: g.$colfff;
+    img {
+      width: 100%;
+      aspect-ratio: 320 / 180;
+      object-fit: cover;
+      border-radius: 10px 10px 0 0;
+      border: none;
+    }
+  }
+
+  &__box {
+    width: 100%;
+    height: 160px;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    border: none;
+  }
+
+  &__map {
+    width: 100%;
+    height: 100%;
+  }
+
+  &__content {
+    padding: 33px 20px 30px;
+    line-height: 1.7;
+    color: g.$col333;
+    background-color: g.$colfff;
+    font-size: 1.4rem;
+    border-radius: 0 0 10px 10px;
+    border: none;
+  }
+
+  &__heading {
+    margin-bottom: 4px;
+    color: g.$col0F1546;
+    font-size: 1.8rem;
+    font-weight: g.$fontWeightBold;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__id {
+    color: g.$col4B4B4B;
+    font-size: 1.2rem;
+    font-weight: g.$fontWeightBold;
+  }
+
+  &__qr {
+    margin: 13px auto 0;
+    width: 164px;
+    text-align: center;
+  }
+
+  &__markerId {
+    margin-top: 0px;
+    color: g.$col4B4B4B;
+    font-size: 1.4rem;
+    font-weight: g.$fontWeightBold;
+  }
+
+  
+}

@@ -1,0 +1,64 @@
+@use "../global" as g;
+
+.full {
+  position: relative;
+  display: block;
+  width: 100%;
+
+  &.-heading {
+    grid-template-rows: 60px 1fr;
+  }
+
+  &__heading {
+    grid-area: heading;
+    display: flex;
+    align-items: center;
+    padding: 0 30px;
+    width: 100%;
+    height: 60px;
+    color: g.$col0F1546;
+    font-size: 2.4rem;
+    font-weight: g.$fontWeightBold;
+    background: g.$colF0F0F0;
+
+    &.-hide {
+      display: none;
+    }
+  }
+
+  &__ar {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    z-index: 0;
+
+    .canvas {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  &__map {
+    position: absolute;
+    width: 360px;
+    height: 360px;
+    top: 0px;
+    right: 0px;
+    z-index: 0;
+    border: 5px solid g.$colC8DBF2;
+
+    .map {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
+
+  .snapshot-nav {
+    position: absolute;
+    top: 24px;
+    left: 30px;
+    z-index: 1;
+  }
+}
