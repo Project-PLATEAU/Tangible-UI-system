@@ -17,13 +17,9 @@
   - Cloud Storage
   - Cloud Function
 
-#### API 仕様
-
-[こちら](./API.md)を参照
-
 ### Firebase の設定
 
-**※Firebase のプロジェクトの設定方法やローカルでの環境構築方法の詳細は Firebase のドキュメントを[参照](https://firebase.google.com/docs?hl=ja)してください。**
+**※Firebase のプロジェクトの設定方法、ローカルでの環境構築方法、仕様方法については Firebase のドキュメントを[参照](https://firebase.google.com/docs?hl=ja)してください。**
 
 #### タンジブル駒の登録
 
@@ -152,3 +148,7 @@ module.exports = {
 3. タイトルとコメントを入力して「保存」して完了です。
 
 ![画像](readme_images/2024-01-31-17-42-57.png)
+
+### API
+
+アプリのデプロイに成功すると、API が使えるようになります。用意されている API の種類や仕様については[API ドキュメント](./API.md)を参照してください。
