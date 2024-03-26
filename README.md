@@ -83,4 +83,4 @@
 
 ## 10. 参考資料 <!-- 技術検証レポートのURLはアクセンチュアにて記載します。 -->
 - 技術検証レポート: https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0030_ver01.pdf
-- PLATEAU WebサイトのUse caseページ「カーボンニュートラル推進支援システム」: https://www.mlit.go.jp/plateau/use-case/uc22-013/
+- PLATEAU WebサイトのUse caseページ「タンジブルインターフェースを活用した住民参加型まちづくり」: https://www.mlit.go.jp/plateau/use-case/uc23-009/
