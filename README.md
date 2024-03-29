@@ -12,7 +12,7 @@
 本システムの詳細については[技術検証レポート](https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0079_ver01.pdf)を参照してください。  
 
 ## 3. 利用手順
-本システムの構築手順及び利用手順については[利用チュートリアル](./README_DEV.md)を参照してください。  
+本システムの構築手順及び利用手順については[利用チュートリアル](https://Project-PLATEAU.github.io/Tangible-UI-system/)を参照してください。  
 
 
 ## 4. システム概要
@@ -82,6 +82,5 @@
 - 本リポジトリの利用により生じた損失及び損害等について、国土交通省はいかなる責任も負わないものとします。
 
 ## 10. 参考資料
-- 技術検証レポートv2: https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0079_ver01.pdf
-- 技術検証レポートv1: https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0030_ver01.pdf
+- 技術検証レポート: https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0079_ver01.pdf
 - PLATEAU WebサイトのUse caseページ「タンジブルインターフェースを活用した住民参加型まちづくり」: https://www.mlit.go.jp/plateau/use-case/uc23-009/
