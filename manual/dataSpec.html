@@ -1,0 +1,944 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>アプリのデータモデル </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="アプリのデータモデル ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../resources/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="アプリのデータモデル">アプリのデータモデル</h1>
+
+<h2 id="firestore-database-のコレクション定義">Firestore Database のコレクション定義</h2>
+<hr>
+<h3 id="buildings"><strong>buildings</strong></h3>
+<ul>
+<li>建物。一般建築物。アプリ上不変データ</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値（gmlID）</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>建物 ID</td>
+<td>bldgID</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>緯度経度</td>
+<td>geopoint</td>
+<td>geopoint</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>高度</td>
+<td>altitude</td>
+<td>number</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>geohash※1</td>
+<td>geohash</td>
+<td>geohash</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>lod0footprint※2</td>
+<td>footprint</td>
+<td>array</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>建物高さ</td>
+<td>height</td>
+<td>number</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>更新日</td>
+<td>modified</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>※1: firebase のジオクエリ用の拡張機能で使用。</p>
+<p>※2: {latitude: number, longitude: number, altitude: number}の array として定義。</p>
+<br>
+<br>
+<h3 id="furnitures"><strong>furnitures</strong></h3>
+<ul>
+<li>アプリ上不変データ</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値※1</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>名称</td>
+<td>name</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>ユニットタイプ</td>
+<td>type</td>
+<td>string※2</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>オブジェクト URL</td>
+<td>objName</td>
+<td>string※3</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>サムネイル URL</td>
+<td>thumbName</td>
+<td>string※4</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>※1: frnID データベースの自動発番<br>
+※2: facility とか、car とか（任意に設定してよい）<br>
+※3: .fbx ファイルのパス（Firebase Storage にアップロードしておく）<br>
+※4: サムネイル画像のパス（Firebase Storage にアップロードしておくと良い）</p>
+<br>
+<br>
+<h3 id="specials"><strong>specials</strong></h3>
+<ul>
+<li>アプリ上不変データ。特殊駒枠。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ユニーク</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>名称</td>
+<td>name</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>駒タイプ</td>
+<td>type</td>
+<td>camera or special※1</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>内容</td>
+<td>body</td>
+<td>object※2</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>※1: 現状カメラと特殊駒のみ<br>
+※2: カメラの場合は以下</p>
+<pre><code>{
+  mode : &quot;human&quot; | &quot;drone&quot; | &quot;heli&quot;,
+  angle: number, // 上下角度
+  view: number, // カメラ視野角
+  height: number, // 高度
+}
+</code></pre>
+<br>
+<br>
+<h3 id="tangibles"><strong>tangibles</strong></h3>
+<ul>
+<li>タンジブルの箱。ラズパイのキーとメタデータは不変</li>
+<li>生データがラズパイ側から送られる。</li>
+<li><strong>area</strong>の tangibleID から生データを呼び出す予定。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>更新日</td>
+<td>modified</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>生データ</td>
+<td>rawData</td>
+<td>object※1</td>
+<td>-</td>
+</tr>
+<tr>
+<td>エリアデータ※2</td>
+<td>area</td>
+<td>object※3</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>稼働状態※4</td>
+<td>active</td>
+<td>boolean</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>カメラ画像の横幅</td>
+<td>width</td>
+<td>number</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>カメラ画像の縦幅</td>
+<td>height</td>
+<td>number</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>ディスプレイの実測値※5</td>
+<td>meterPerPixel</td>
+<td>number</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>※1: ラズパイから送られてきた生データ。現在地に当たる。数秒間隔なので履歴としてすべてのデータを残すことはしない?生データではなく、座標変換（緯度経度）までしてしまうか？<br>
+※2: このタンジブルが現在どのエリアを繁栄しているか。アプリ側で area と紐づけるときに更新される<br>
+※3:紐づけ情報。rotation は実装未定。map は中心座標と zoom レベルで表示が決定されるため。</p>
+<pre><code>{
+  workspaceID: number,
+  areaID: number
+  center: { /* center?  */
+    lat: number,
+    lng: number
+  },
+  zoom: number,
+  rotation?: number
+}
+</code></pre>
+<p>※4:稼働状態。ラズパイ側から API で activate してからデータを送信する。アプリ側では<code>active=true</code>であれば稼働中と判断する<br>
+※5:ディスプレイの実測値。１ピクセルあたりのメートル数</p>
+<br>
+<br>
+<h3 id="users"><strong>users</strong></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値※1</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>表示名</td>
+<td>displayName</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>プロフィール写真</td>
+<td>profile</td>
+<td>string※2</td>
+<td>-</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>変更日</td>
+<td>modified</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>※1: firebase auth で登録されたハッシュ値。<br>
+※2: 画像ファイル名<br>
+<br>
+<br></p>
+<h3 id="workspaces"><strong>workspaces</strong></h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>表示名</td>
+<td>title</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>説明</td>
+<td>description</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>オーガナイザ</td>
+<td>organizer</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>変更日</td>
+<td>modified</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>検討範囲</td>
+<td>areas</td>
+<td>collection</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>スナップショット</td>
+<td>snapshots</td>
+<td>collection</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<br>
+<br>
+<h3 id="workspacesareas"><strong>workspaces.areas</strong></h3>
+<ul>
+<li>検討範囲オブジェクト</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>タンジブル ID</td>
+<td>tangibleID</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>タイトル</td>
+<td>title</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>範囲</td>
+<td>area</td>
+<td>object※1</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>変更日</td>
+<td>modified</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>配置駒</td>
+<td>markers</td>
+<td>collection</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>※1: geohash を入れる？zoom と center が決まるとタンジブル側のサイズと解像度の制限で範囲は決定されるため、NE, SW は計算可能</p>
+<pre><code>{
+  NE: { /* North East */
+    lat: number,
+    lon: number
+  },
+  SW: { /* South West */
+    lat: number,
+    lon: number
+  },
+  center: {
+    lat: number,
+    lng: number
+  },
+  zoom: number,
+  rotation?: number,
+  map?: string // 国土地理院のデータより作成したエリア範囲画像ファイル名
+  unity?: string // Unityで作成したエリア範囲画像ファイル名
+}
+</code></pre>
+<br>
+<br>
+<h3 id="workspacesareasmarkers"><strong>workspaces.areas.markers</strong></h3>
+<ul>
+<li><strong>workspaces.snapshots.areas.markers</strong>と同じではない（あくまで選択しただけで配置してるかは未定だから）。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>マーカー ID</td>
+<td>markerID</td>
+<td>string※1</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>マーカータイプ</td>
+<td>type</td>
+<td>string※2</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>オブジェクト ID</td>
+<td>objID</td>
+<td>string※3</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>コメント</td>
+<td>comment</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>更新日</td>
+<td>modified</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>※1: ユニット番号。&quot;01&quot;-&quot;99&quot;(ユニットである必要はないかも)<br>
+※2: &quot;furniture&quot; | &quot;building&quot; | &quot;special&quot;<br>
+※3: type 次第。ビルであれば<strong>buildings</strong>コレクションの gmlID。ファニチャーであれば<strong>furnitures</strong>コレクションの frnID。スペシャルは camera_01 など ID で何かを判別できるもの</p>
+<br>
+<br>
+<h3 id="workspacessnapshots"><strong>workspaces.snapshots</strong></h3>
+<ul>
+<li>セーブデータ</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>保存日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>スクリーンショット</td>
+<td>screenshot</td>
+<td>string※1</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>タイトル</td>
+<td>title</td>
+<td>string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>コメント</td>
+<td>comment</td>
+<td>string</td>
+<td>-</td>
+</tr>
+<tr>
+<td>カメラ位置</td>
+<td>camera</td>
+<td>object※2</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>検討範囲</td>
+<td>areas※3</td>
+<td>collection</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>※1: 画像ファイル名。URL は id などから生成。unity など外部からの場合も同様<br>
+※2: VR 用のカメラ座標</p>
+<pre><code>{
+  position: {
+    lat: number,
+    lng: number,
+    alt: number
+  },
+  target: {
+    lat: number,
+    lng: number,
+    alt: number
+  }
+}
+</code></pre>
+<p>※3: エリア情報。ドキュメント ID ごとコピー</p>
+<br>
+<br>
+<h3 id="workspacessnapshotsareas"><strong>workspaces.snapshots.areas</strong></h3>
+<ul>
+<li>検討範囲オブジェクト</li>
+<li>基本データは<strong>workspaces.area</strong>のコピー</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>タンジブル ID</td>
+<td>tangibleID</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>タイトル</td>
+<td>title</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>範囲</td>
+<td>area</td>
+<td>object</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>変更日</td>
+<td>modified</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>配置駒</td>
+<td>markers※1</td>
+<td>collection</td>
+<td>-</td>
+</tr>
+</tbody>
+</table>
+<p>※1: 配置されている駒のみ。座標情報を含む</p>
+<br>
+<br>
+<h3 id="workspacessnapshotsareasmarkers"><strong>workspaces.snapshots.areas.markers</strong></h3>
+<ul>
+<li><strong>workspaces.areas.markers</strong>と完全な同一構造ではない。</li>
+<li><strong>workspaces.areas.markers</strong>で登録だけして配置していない駒は記録されない。</li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>field</th>
+<th>type</th>
+<th>必須</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>id</td>
+<td>id</td>
+<td>ハッシュ値</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>マーカー ID</td>
+<td>markerID</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>タイプ</td>
+<td>type</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>オブジェクト ID</td>
+<td>objID</td>
+<td>string</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>登録日</td>
+<td>created</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>更新日</td>
+<td>modified</td>
+<td>timestamp</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>座標</td>
+<td>position</td>
+<td>object※1</td>
+<td>✓</td>
+</tr>
+<tr>
+<td>方向</td>
+<td>rotation</td>
+<td>number※2</td>
+<td>✓</td>
+</tr>
+</tbody>
+</table>
+<p>※1: 緯度経度座標情報</p>
+<pre><code>{
+  lat: number,
+  lng: number,
+  alt?: number
+}
+</code></pre>
+<p>※4: 北を 0 ラジアンとしたマーカーの向き情報</p>
+<br>
+<br>
+<hr>
+<h2 id="注意事項">注意事項</h2>
+<ul>
+<li>アプリ上でエリアやスナップショットを削除した場合、ドキュメントは削除されるが配下のサブコレクションは削除されない。アプリを使う上では気にならない。</li>
+</ul>
+<hr>
+<h2 id="セキュリティ設定">セキュリティ設定</h2>
+<ul>
+<li>本プロジェクトでは Firebase のダッシュボード上で設定。<br>
+Firestore Database, Storege のページからルール → ルールの編集を選択し、以下のコードを貼り付ける。
+<br>
+<br></li>
+</ul>
+<h3 id="firestore-database-のルール"><strong>Firestore Database のルール</strong></h3>
+<pre><code>rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /buildings/{building} {
+      allow read: if request.auth != null;
+      allow write: if request.auth != null;
+    }
+    match /users/{userId}/{user=**} {
+      allow read: if request.auth != null;
+      allow write: if request.auth.uid == userId;
+    }
+  }
+}
+</code></pre>
+<br>
+<br>
+<h3 id="storage-のルール"><strong>Storage のルール</strong></h3>
+<pre><code>rules_version = '2';
+service firebase.storage {
+  match /b/{bucket}/o {
+    match /tags/{tag=**} {
+      allow read;
+      allow write: if request.auth != null;
+    }
+    match /users/{userId}/{imgs=**} {
+      allow read;
+      allow write: if request.auth.uid == userId;
+    }
+  }
+}
+</code></pre>
+<br>
+<br>
+<hr>
+<h2 id="plateau-モデルの組み込み手順">PLATEAU モデルの組み込み手順</h2>
+<h3 id="gml-ファイルより必要なデータを抽出"><strong>①gml ファイルより必要なデータを抽出</strong></h3>
+<p>例:建物の場合
+<code>bldg:Building</code>要素内より、次の属性を抽出。</p>
+<pre><code>- gml:id ※1
+- uro:buildingID ※2
+- bldg:lod1Solid※3
+</code></pre>
+<p>※1: ユニークであるもの。</p>
+<p>※2: bldgID 等。&quot;bldg:consistsOfBuildingPart&quot;を含む場合は１つの bldgID に対し、複数の gmlID が生まれるため、この値はユニークではない。また<code>&lt;gen:stringAttribute name=&quot;建物ID&quot;&gt;</code>の値である可能性もある。</p>
+<p>※3: &quot;bldg:lod0FootPrint&quot;、&quot;bldg:lod0RoofEdge&quot;ではなく&quot;bldg:lod1Solid&quot;より底面、高さを抽出し、それを footprint と高さみなす。
+<br>
+<br></p>
+<h3 id="json-形式に整形"><strong>②JSON 形式に整形</strong></h3>
+<p>posList は以下のように配列に変換。</p>
+<pre><code>{ latitude: Number, longitude: Number, altitude: Number}
+</code></pre>
+<p>またジオクエリに対応するためオブジェクトの中心座標を計算（平均値）。</p>
+<pre><code># 建物オブジェクト
+{
+      gmlID: string,
+      bldgID: string,
+      height: number,
+      footprint: [{
+      	latitude: number,
+      	longitude: number,
+      	altitude: number
+      }..],
+      center: {
+      	latitude: number,
+      	longitude: number,
+      	altitude: number
+      }
+}
+</code></pre>
+<br>
+<br>
+<h3 id="firestore-に登録"><strong>③Firestore に登録</strong></h3>
+<p>center は GeoPoint に変換。GeoHash ロジックを使用するのでその情報も付与。
+<br>
+<br></p>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>

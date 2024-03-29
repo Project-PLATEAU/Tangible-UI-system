@@ -1,0 +1,221 @@
+﻿<!DOCTYPE html>
+<!--[if IE]><![endif]-->
+<html>
+
+  <head>
+    <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+      <title>環境構築手順書 </title>
+      <meta name="viewport" content="width=device-width">
+      <meta name="title" content="環境構築手順書 ">
+    
+      <link rel="shortcut icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../styles/docfx.vendor.min.css">
+      <link rel="stylesheet" href="../styles/docfx.css">
+      <link rel="stylesheet" href="../styles/main.css">
+      <meta property="docfx:navrel" content="../toc.html">
+      <meta property="docfx:tocrel" content="toc.html">
+    
+    <meta property="docfx:rel" content="../">
+    
+  </head>
+  <body data-spy="scroll" data-target="#affix" data-offset="120">
+    <div id="wrapper">
+      <header>
+
+        <nav id="autocollapse" class="navbar navbar-inverse ng-scope" role="navigation">
+          <div class="container">
+            <div class="navbar-header">
+              <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navbar">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </button>
+
+              <a class="navbar-brand" href="../index.html">
+                <img id="logo" class="svg" src="../resources/logo.svg" alt="">
+              </a>
+            </div>
+            <div class="collapse navbar-collapse" id="navbar">
+              <form class="navbar-form navbar-right" role="search" id="search">
+                <div class="form-group">
+                  <input type="text" class="form-control" id="search-query" placeholder="Search" autocomplete="off">
+                </div>
+              </form>
+            </div>
+          </div>
+        </nav>
+
+        <div class="subnav navbar navbar-default">
+          <div class="container hide-when-search" id="breadcrumb">
+            <ul class="breadcrumb">
+              <li></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+      <div class="container body-content">
+
+        <div id="search-results">
+          <div class="search-list">Search Results for <span></span></div>
+          <div class="sr-items">
+            <p><i class="glyphicon glyphicon-refresh index-loading"></i></p>
+          </div>
+          <ul id="pagination" data-first="First" data-prev="Previous" data-next="Next" data-last="Last"></ul>
+        </div>
+      </div>
+      <div role="main" class="container body-content hide-when-search">
+
+        <div class="sidenav hide-when-search">
+          <a class="btn toc-toggle collapse" data-toggle="collapse" href="#sidetoggle" aria-expanded="false" aria-controls="sidetoggle">Show / Hide Table of Contents</a>
+          <div class="sidetoggle collapse" id="sidetoggle">
+            <div id="sidetoc"></div>
+          </div>
+        </div>
+        <div class="article row grid-right">
+          <div class="col-md-10">
+            <article class="content wrap" id="_content" data-uid="">
+<h1 id="環境構築手順書">環境構築手順書</h1>
+
+<h1 id="1-本書について">1 本書について</h1>
+<p>本書では、PLATEAU TANGIBLE WEBアプリ（以下「本システム」という。）の利用環境構築手順について記載しています。本システムの構成や仕様の詳細については以下も参考にしてください。</p>
+<p><a href="https://www.mlit.go.jp/plateau/file/libraries/doc/plateau_tech_doc_0079_ver01.pdf">技術検証レポート</a></p>
+<h1 id="2-動作環境">2 動作環境</h1>
+<p>本システムの動作環境は以下のとおりです。</p>
+<h4 id="フロントサイドアプリ">フロントサイドアプリ</h4>
+<ul>
+<li>Web フレームワーク：React.js (ver18.2.0)</li>
+<li>3D 対応ライブラリ：Three.js (ver0.158.0)</li>
+</ul>
+<h4 id="バックエンドアプリspa">バックエンドアプリ（SPA）</h4>
+<ul>
+<li>Firebase Project
+<ul>
+<li>Authentication</li>
+<li>Firestore Database</li>
+<li>Cloud Storage</li>
+<li>Cloud Function</li>
+</ul>
+</li>
+</ul>
+<h1 id="3-設定手順">3 設定手順</h1>
+<h3 id="firebase-の設定">Firebase の設定</h3>
+<p><strong>※Firebase のプロジェクトの設定方法、ローカルでの環境構築方法、仕様方法については Firebase のドキュメントを<a href="https://firebase.google.com/docs?hl=ja">参照</a>してください。</strong></p>
+<h4 id="タンジブル駒の登録">タンジブル駒の登録</h4>
+<p><a href="dataSpec.html">データモデル</a>を参考に、タンジブル駒（buildings、furnitures、specials）を登録しておきます。</p>
+<h4 id="firebase-storage-を-localhost-で使う際の注意点">Firebase Storage を localhost で使う際の注意点</h4>
+<ul>
+<li>cors 設定で弾かれるため、cors.json を作成します</li>
+</ul>
+<pre><code>[
+  {
+    &quot;origin&quot;: [&quot;http://localhost:5173&quot;, &quot;https://********.firebaseapp.com&quot;, &quot;https://********.web.app&quot;],
+    &quot;method&quot;: [&quot;GET&quot;],
+    &quot;maxAgeSeconds&quot;: 3600
+  }
+]
+</code></pre>
+<ul>
+<li>cors.json を作成したフォルダ（基本はプロジェクトのルート）にて、gsutl コマンドを実行してください</li>
+</ul>
+<pre><code>gsutil cors set cors.json gs://********.appspot.com
+</code></pre>
+<h4 id="firebase-function-の注意点">Firebase Function の注意点</h4>
+<h5 id="puppeteer-設定">Puppeteer 設定</h5>
+<ul>
+<li>国土地理院の画像を生成するために Function 側で osm-static-maps というライブラリを利用していますが、このライブラリは puppeteer というライブラリを利用しています<br>
+この puppeteer は v19 以降でかなり破壊的な変更が加えられており、osm-static-maps の最新版では対応できていません<br>
+そのため、osm-static-maps の<a href="https://github.com/jperelli/osm-static-maps">github ページ</a>からソースファイルを直接ダウンロードし、Function 内に直接追加しています(functions/third_party/osm/)</li>
+<li>Puppeteer を Cloud function にて使用する方法は<a href="https://ths-net.co.jp/shopify_blog/puppeteer/">ここ</a>や<a href="https://www.chikach.net/category/useful/puppeteer-v19-cloud-functions-workaround/">ここ</a>が参考になります</li>
+</ul>
+<ol>
+<li><code>.puppeteerrc.cjs</code>の追加</li>
+</ol>
+<pre><code>const {join} = require('path');
+/**
+ * @type {import(&quot;puppeteer&quot;).Configuration}
+ */
+module.exports = {
+  // Changes the cache location for Puppeteer.
+  cacheDirectory: join(__dirname, '.cache', 'puppeteer'),
+};
+</code></pre>
+<br>
+<ol start="2">
+<li>puppeteer をすでにインストールしていれば一度アンインストールし、再度インストール</li>
+</ol>
+<br>
+<ol start="3">
+<li><code>firebase.json.</code>に追記</li>
+</ol>
+<pre><code>{
+  &quot;functions&quot;: [
+    {
+      &quot;ignore&quot;: [
+        &quot;.cache&quot;, // これを追記
+        ...
+      ],
+      ...
+    }
+  ],
+  ...
+}
+</code></pre>
+<ul>
+<li>デプロイ時に Chromium 本体をアプロードしないため。そうしないと「パッケージが大きすぎるためデプロイできません」等のエラーがでます</li>
+</ul>
+<br>
+<ol start="4">
+<li><code>package.json</code>(function 側)に追記</li>
+</ol>
+<pre><code>{
+  &quot;scripts&quot;: {
+    &quot;postinstall&quot;: &quot;node node_modules/puppeteer/install.js&quot;, // これを追記
+    ...
+  },
+  ...
+}
+</code></pre>
+<ul>
+<li>Cloud Functions ではデプロイ後の<code>npm install</code>時に Chromium が自動的にインストールされないので、postinstall でインストールスクリプトを実行してください。</li>
+</ul>
+<h3 id="aruco-マーカー">Aruco マーカー</h3>
+<ul>
+<li>予め 0 から 120 番までのマーカー画像を public/aruco に用意しています<br>
+Aruco マーカーについて、詳しくは、こちらの<a href="https://github.com/okalachev/arucogen">サイト</a>を参照してください。</li>
+</ul>
+
+</article>
+          </div>
+
+          <div class="hidden-sm col-md-2" role="complementary">
+            <div class="sideaffix">
+              <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm affix" id="affix">
+                <h5>In this article</h5>
+                <div></div>
+              </nav>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <footer>
+        <div class="grad-bottom"></div>
+        <div class="footer">
+          <div class="container">
+            <span class="pull-right">
+              <a href="#top">Back to top</a>
+            </span>
+      
+      <span>Generated by <strong>DocFX</strong></span>
+          </div>
+        </div>
+      </footer>
+    </div>
+
+    <script type="text/javascript" src="../styles/docfx.vendor.min.js"></script>
+    <script type="text/javascript" src="../styles/docfx.js"></script>
+    <script type="text/javascript" src="../styles/main.js"></script>
+  </body>
+</html>
